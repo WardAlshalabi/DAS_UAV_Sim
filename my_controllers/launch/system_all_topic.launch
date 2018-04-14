@@ -1,0 +1,53 @@
+<launch>
+
+<node name="controller_0" pkg="my_controllers" type="GoToPosition3" output="screen" >
+	<param name="uav_id" value="0" />
+	<param name="station_x" value="-10" />
+	<param name="station_y" value="10" />
+	<param name="station_z" value="1" />
+</node>
+
+
+
+<node name="controller_1" pkg="my_controllers" type="GoToPosition3" output="screen" >
+	<param name="uav_id" value="1" />
+	<param name="station_x" value="10" />
+	<param name="station_y" value="10" />
+	<param name="station_z" value="1" />
+</node>
+
+<node name="controller_2" pkg="my_controllers" type="GoToPosition3" output="screen" >
+	<param name="uav_id" value="2" />
+	<param name="station_x" value="0" />
+	<param name="station_y" value="10" />
+	<param name="station_z" value="1" />
+</node>
+
+<node name="patrolling_0" pkg="my_controllers" type="patrol" output="screen" >
+	<param name="uav_id" value="0" />
+	<param name="uav0_first_target_vertex" value="4" />
+	<param name="uav1_first_target_vertex" value="11" />
+	<param name="uav2_first_target_vertex" value="3" />
+</node>
+
+<node name="patrolling_1" pkg="my_controllers" type="patrol" output="screen" >
+	<param name="uav_id" value="1" />
+	<param name="uav0_first_target_vertex" value="4" />
+	<param name="uav1_first_target_vertex" value="11" />
+	<param name="uav2_first_target_vertex" value="3" />
+</node>
+
+<node name="patrolling_2" pkg="my_controllers" type="patrol" output="screen" >
+	<param name="uav_id" value="2" />
+	<param name="uav0_first_target_vertex" value="4" />
+	<param name="uav1_first_target_vertex" value="11" />
+	<param name="uav2_first_target_vertex" value="3" />
+</node>
+
+<node pkg="image_view" type="image_view" name="image_view0" args="image:=uav0/cam/camera/image"/>
+
+<node pkg="image_view" type="image_view" name="image_view1" args="image:=uav1/cam/camera/image"/>
+
+<node pkg="image_view" type="image_view" name="image_view2" args="image:=uav2/cam/camera/image"/>
+
+</launch>

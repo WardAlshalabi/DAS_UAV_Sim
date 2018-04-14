@@ -1,0 +1,8 @@
+<launch>
+
+<node name="patrolling_0" pkg="my_controllers" type="patrol2" output="screen" >
+	<param name="uav_id" value="0" />
+</node>
+
+
+</launch>

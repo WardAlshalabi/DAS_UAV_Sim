@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find my_controllers)/worlds/myworld.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <include file="$(find hector_quadrotor_gazebo)/launch/spawn_three_quadrotors.launch" />
+
+<node pkg="rosservice" type="rosservice" name="uav0_enable_motors" args="call --wait /uav0/enable_motors True"/>
+
+<node pkg="rosservice" type="rosservice" name="uav1_enable_motors" args="call --wait /uav1/enable_motors True"/>
+
+<node pkg="rosservice" type="rosservice" name="uav2_enable_motors" args="call --wait /uav2/enable_motors True"/>
+
+</launch>

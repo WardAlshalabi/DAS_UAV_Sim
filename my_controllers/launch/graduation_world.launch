@@ -1,0 +1,5 @@
+<launch>
+
+<include file="$(find hector_quadrotor_gazebo)/launch/swarmquadrotor_empty_world.launch" />
+
+</launch>

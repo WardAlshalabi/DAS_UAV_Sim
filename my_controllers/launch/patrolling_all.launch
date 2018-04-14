@@ -1,0 +1,44 @@
+<launch>
+
+
+
+<node name="patrolling_0" pkg="my_controllers" type="patrol2" output="screen" >
+	<param name="uav_id" value="0" />
+</node>
+
+<node name="patrolling_1" pkg="my_controllers" type="patrol2" output="screen" >
+	<param name="uav_id" value="1" />
+</node>
+
+<node name="patrolling_2" pkg="my_controllers" type="patrol2" output="screen" >
+	<param name="uav_id" value="2" />
+</node>
+
+<node name="qr_tracker_0" pkg="ros_qr_tracker" type="qr_tracker.py" args="_topic:=/uav0/cam/camera/image/compressed" >
+</node>
+
+<node name="qr_tracker_1" pkg="ros_qr_tracker" type="qr_tracker.py" args="_topic:=/uav1/cam/camera/image/compressed" >
+</node>
+
+<node name="qr_tracker_2" pkg="ros_qr_tracker" type="qr_tracker.py" args="_topic:=/uav2/cam/camera/image/compressed" >
+</node>
+
+<node pkg="rosservice" type="rosservice" name="qr_tracker_service_0" args="call --wait /qr_tracker_0/start"/>
+<node pkg="rosservice" type="rosservice" name="qr_tracker_service_1" args="call --wait /qr_tracker_1/start"/>
+<node pkg="rosservice" type="rosservice" name="qr_tracker_service_2" args="call --wait /qr_tracker_2/start"/>
+
+<node name="landing_controller_0" pkg="my_controllers" type="landing_controller" output="screen" >
+	<param name="uav_id" value="0" />
+</node>
+
+<node name="landing_controller_1" pkg="my_controllers" type="landing_controller" output="screen" >
+	<param name="uav_id" value="1" />
+</node>
+
+<node name="landing_controller_2" pkg="my_controllers" type="landing_controller" output="screen" >
+	<param name="uav_id" value="2" />
+</node>
+
+<node name="rqt_image" pkg="rqt_image_view" type="rqt_image_view" />
+
+</launch>

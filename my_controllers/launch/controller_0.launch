@@ -1,0 +1,10 @@
+<launch>
+
+
+
+<node name="controller_0" pkg="my_controllers" type="GoToPosition3" output="screen" >
+	<param name="uav_id" value="0" />
+</node>
+
+
+</launch>
