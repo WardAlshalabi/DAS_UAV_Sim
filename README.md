@@ -8,6 +8,12 @@ sudo apt-get install ros-kinetic-navigation
 
 sudo apt-get install ros-kinetic-hector-*
 
+sudo apt-get install libffi-dev libffi6 libzbar-dev
+
+sudo apt-get install python-pip
+
+pip install libzbar-cffi
+
 sudo apt-get install python-rosdep
 
 sudo rosdep init
