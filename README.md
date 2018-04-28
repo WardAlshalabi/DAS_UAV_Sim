@@ -2,7 +2,7 @@
 Drone-based Autonomous Surveillance System
 
 
-#run these commands on the up directory of your workspace before compiling
+#run these commands on the up directory of your workspace
 
 sudo apt-get install ros-kinetic-navigation
 
@@ -21,3 +21,7 @@ sudo rosdep init
 rosdep update
 
 rosdep install --from-paths src --ignore-src -r -y
+
+catkin_make --pkg ros_qr_tracker
+
+catkin_make
