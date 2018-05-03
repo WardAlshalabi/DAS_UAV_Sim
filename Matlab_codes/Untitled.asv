@@ -1,0 +1,37 @@
+close all
+clear all
+clc
+rosshutdown
+
+rosinit('');
+sub = rossubscriber('/chatter',@Callback);
+pause(1)
+number_of_points=12;
+radius=10;
+y1=450;
+y2=270;
+y3=90;
+circles=[90, y1, radius;    300, y1, radius;    510, y1, radius;    685, y1, radius;
+         90, y2, radius;    270, y2, radius;    480, y2, radius;    685, y2, radius;
+         120, y3, radius;   330, y3, radius;    510, y3, radius;    685, y3, radius];
+     
+counters=zeros(1,number_of_points);
+while(1)
+RGB=imread('arena2.png');
+for i=1:number_of_points
+RGB = insertShape(RGB,'FilledCircle',circles(i,:),'color',[counters(i),255-counters(i),0]);
+end
+imshow(RGB);
+for i=1:number_of_points
+    if(counters(i)<255)
+    counters(i)=counters(i)+1;
+    end
+end
+%write ROS part here
+counters(1)=0;
+
+end
+
+function data= Callback(~,message)
+counters(message
+end
